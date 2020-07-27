@@ -9,11 +9,16 @@ set shiftwidth=4    "how many columns to re-indent with << and >>
 set showmatch       "show matching brackets
 set ruler           "show cursor position at all times
 set number relativenumber " toggle hybrid line numbers
+set ignorecase      "required for smartcase to work
 set smartcase       "if search contains capital letters, search becomes case sensitive
 set incsearch       "incremental search
 set colorcolumn=120 "mark 120 character column
 syntax on           "turn on syntax highlighting
 set bs=2 "fix backspace on some consoles
+
+"make :W and :Q work
+command! -bang -range=% -complete=file -nargs=* W <line1>,<line2>write<bang> <args>
+command! -bang Q quit<bang>
 
  "ctrl-K opens nerdtree
 map <C-k> :NERDTreeToggle<CR>
@@ -49,6 +54,7 @@ Plug 'morhetz/gruvbox'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'jremmen/vim-ripgrep'
 Plug 'leafgarland/typescript-vim'
+Plug 'easymotion/vim-easymotion'
 Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 colorscheme gruvbox
@@ -69,3 +75,17 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
+" <Leader>f{char} to move to {char}
+ map  <Leader>f <Plug>(easymotion-bd-f)
+ nmap <Leader>f <Plug>(easymotion-overwin-f)
+"
+" " s{char} to move to {char}
+ nmap s <Plug>(easymotion-overwin-f)
+"
+" " Move to line
+ map <Leader>L <Plug>(easymotion-bd-jk)
+ nmap <Leader>L <Plug>(easymotion-overwin-line)
+"
+" " Move to word
+ map  <Leader>w <Plug>(easymotion-bd-w)
+ nmap <Leader>w <Plug>(easymotion-overwin-w)
