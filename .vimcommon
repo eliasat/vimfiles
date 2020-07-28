@@ -1,0 +1,17 @@
+set nowrap          "don't wrap lines
+set expandtab       "expand tabs into spaces
+set autoindent      "auto-indent new lines
+set softtabstop=4   "indentation level of soft-tabs
+set tabstop=4       "tabs are 4 space long
+set shiftwidth=4    "how many columns to re-indent with << and >>
+set number relativenumber " toggle hybrid line numbers
+set ignorecase      "required for smartcase to work
+set smartcase       "if search contains capital letters, search becomes case sensitive
+set incsearch       "incremental search
+set hlsearch        "highlight search results
+syntax on           "turn on syntax highlighting
+set bs=2 "fix backspace on some consoles
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc> :noh<return><esc>
+

@@ -1,1 +1,2 @@
+source ~/vimfiles/.vimcommon "Load common settings
 map s :vsc Tools.InvokeAceJumpCommand<CR>

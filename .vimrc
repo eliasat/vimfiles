@@ -1,29 +1,17 @@
+source ~/vimfiles/.vimcommon "Load common settings
+
 set nocompatible    "run in vim mode
-set nowrap          "don't wrap lines
-set expandtab       "expand tabs into spaces
-set autoindent      "auto-indent new lines
 set smartindent     "return ending brackets to proper locations
-set softtabstop=4   "indentation level of soft-tabs
-set tabstop=4       "tabs are 4 space long
-set shiftwidth=4    "how many columns to re-indent with << and >>
 set showmatch       "show matching brackets
 set ruler           "show cursor position at all times
-set number relativenumber " toggle hybrid line numbers
-set ignorecase      "required for smartcase to work
-set smartcase       "if search contains capital letters, search becomes case sensitive
-set incsearch       "incremental search
 set colorcolumn=120 "mark 120 character column
-syntax on           "turn on syntax highlighting
-set bs=2 "fix backspace on some consoles
+
+" Clear highlighting on escape in normal mode
+nnoremap <esc>^[ <esc>^[
 
 "make :W and :Q work
 command! -bang -range=% -complete=file -nargs=* W <line1>,<line2>write<bang> <args>
 command! -bang Q quit<bang>
-
- "ctrl-K opens nerdtree
-map <C-k> :NERDTreeToggle<CR>
-
-autocmd vimenter * colorscheme gruvbox "theme
 
 "" Backup, Swap and Undo
 set undofile " Persistent Undo
@@ -36,11 +24,6 @@ else
     set backupdir=~/.vim/backup,/tmp
     set undodir=~/.vim/undo,/tmp
 endif
-
-"open nerdtree when vim opens a directory
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) 
-            \&& !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
 "Plug extensions
 if has("win32")
@@ -57,6 +40,18 @@ Plug 'leafgarland/typescript-vim'
 Plug 'easymotion/vim-easymotion'
 Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
+
+
+"ctrl-K opens nerdtree
+map <C-k> :NERDTreeToggle<CR>
+
+"open nerdtree when vim opens a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) 
+            \&& !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
+
+"theme
+autocmd vimenter * colorscheme gruvbox "theme
 colorscheme gruvbox
 set background=dark
 
