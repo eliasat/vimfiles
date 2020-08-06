@@ -9,6 +9,10 @@ set colorcolumn=120 "mark 120 character column
 " Clear highlighting on escape in normal mode
 nnoremap <esc>^[ <esc>^[
 
+" Add relative jumps that are longer than 1 to jumplist
+nnoremap <expr> k (v:count > 1 ? "m'" . v:count : '') . 'k'
+nnoremap <expr> j (v:count > 1 ? "m'" . v:count : '') . 'j'
+
 "make :W and :Q work
 command! -bang -range=% -complete=file -nargs=* W <line1>,<line2>write<bang> <args>
 command! -bang Q quit<bang>
@@ -69,6 +73,8 @@ let g:coc_global_extensions = [
 if executable('rg')
     let g:rg_derive_root='true'
 endif
+" Easymotion uses smartcase
+let g:EasyMotion_smartcase = 1
 
 " <Leader>f{char} to move to {char}
  map  <Leader>f <Plug>(easymotion-bd-f)
