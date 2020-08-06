@@ -12,7 +12,6 @@ set hlsearch        "highlight search results
 syntax on           "turn on syntax highlighting
 set bs=2 "fix backspace on some consoles
 
-
 " Clear highlighting on escape in normal mode
 nnoremap <esc> :noh<return><esc>
 
