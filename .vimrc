@@ -54,6 +54,11 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) 
             \&& !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 
+" enable line numbers
+let NERDTreeShowLineNumbers=1
+" make sure relative line numbers are used
+autocmd FileType nerdtree setlocal relativenumber
+
 "theme
 autocmd vimenter * colorscheme gruvbox "theme
 colorscheme gruvbox
@@ -90,3 +95,12 @@ let g:EasyMotion_smartcase = 1
 " " Move to word
  map  <Leader>w <Plug>(easymotion-bd-w)
  nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+" :W saves files 
+ nnoremap :W :w<cr> 
+
+call RltvNmbr#RltvNmbrCtrl(1)
+
+set list            "show whitespace characters
+set listchars=eol:$,nbsp:_,space:·,tab:<->,trail:~,extends:>,precedes:< "characters for whitespace
+

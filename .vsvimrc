@@ -1,3 +1,4 @@
+:set vsvimcaret=100
 source ~/vimfiles/.vimcommon "Load common settings
 map s :vsc Tools.InvokeAceJumpCommand<CR>
 map gh :vsc Edit.QuickInfo<CR>
